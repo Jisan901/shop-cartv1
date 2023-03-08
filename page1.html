@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cart</title>
+    <style type="text/css">
+        @font-face{
+    font-family:poppins;
+    src:url(Poppins-Regular.ttf);
+}
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: poppins;
+        }
+        .cartPage{
+            height: 100vh;
+            width: 100%;
+            background-color: #E6E7EB;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cartDetails{
+            height: 90%;
+            width: 90%;
+            background-color: #FFFFFF;
+            display: flex;
+            box-shadow: 1px 1px 25px rgba(0,0,0,0.2);
+        }
+        .cartDetails .cartItems{
+            width: 70%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 40px;
+        }
+        .cartDetails .cartItems .text-content,.cartDetails .orderSummary .text-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #bbbbbb;
+        }
+        .cartDetails .placeholder-1{
+            display: grid;
+            grid-template-columns: 3fr 1.3fr 1fr 1fr;
+            padding: 15px 0;
+        }
+        .cartDetails .placeholder-1 span{
+            color: #929292;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        .cartDetails .placeholder-2{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .cartDetails .placeholder-2 span{
+            color: #929292;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        .cartDetails .orderSummary{
+            width: 30%;
+            height: 100%;
+            background-color: #F5F5F6;
+            box-sizing: border-box;
+            padding: 30px;
+        }
+        .cartItems .items{
+            height: 90%;
+            width: 100%;
+            overflow: scroll;
+        }
+        .cartItems .items .item{
+            height: 120px;
+        }
+        .cartItems .item{
+            display: grid;
+            grid-template-columns: 2.5fr 1.5fr 1fr 1fr;
+            align-items: center;
+        }
+        .item .item-details{
+            display: flex;
+            align-items: center;
+        }
+        .item .item-details img{
+            border-radius: 8px;
+        }
+        .item-details>span{
+            font-weight: 800;
+        }
+        .item .item-desc{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: 8px;
+        }
+        
+        .item-desc button{
+            font-size: 0.7rem;
+            color: #fff;
+            background-color: tomato;
+            border: none;
+            border-radius: 5px;
+            width: 70px;
+            margin-top: 8px;
+        }
+        .item-desc span{
+            color: tomato;
+            font-size: 0.9rem;
+        }
+        .quantity{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .quantity input{
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .quantity button{
+            height: 25px;
+            width: 25px;
+            border: none;
+            text-align: center;
+            font-weight: bold;
+        }
+        .form-control{
+            width: 100%;
+        }
+        .form-control input,select{
+            width: 100%;
+            margin: 10px auto;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .form > button{
+            color: #fff;
+            background-color: tomato;
+            border: none;
+            padding: 5px 7px;
+            border-radius: 5px;
+        }
+        .orderSummary > button{
+            width: 100%;
+            background-color: royalblue;
+            border: none;
+            padding: 5px 7px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1.3rem;
+        }
+        .back-link{
+            color: royalblue;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="cartPage">
+        <div class="cartDetails">
+            <div class="cartItems">
+                <div class="text-content">
+                    <h2>Shopping cart</h2>
+                    <h2>4 Items</h2>
+                </div>
+                <div class="placeholder-1">
+                    <span>product details</span>
+                    <span>Quantity</span>
+                    <span>price</span>
+                    <span>total</span>
+                </div>
+                <div class="items">
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <img src="./pl1.jpg" alt="item" height="90px" width="90px" />
+                            <div class="item-desc">
+                                <h4>Headphone v22</h4>
+                                <span>PS4</span>
+                                <button>Remove</button>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <button>+</button>
+                            <input type="number" name="quantity" id="quantity" value="1" disabled />
+                            <button>-</button>
+                        </div>
+                        <span>₤300.0</span>
+                        <span>₤300.5</span>
+                    </div>
+                </div>
+                <a class="back-link" href="#">continue Shopping</a>
+            </div>
+            <div class="orderSummary">
+                <div class="text-content">
+                    <h3>order summary</h3>
+                </div>
+                <div class="placeholder-2">
+                    <span>Items 4</span>
+                    <span>$3000</span>
+                </div>
+                <form class="form">
+                    <div class="form-control">
+                        <label for="shipping">Shipping</label>
+                        <select name="shipping" id="shipping">
+                        <option value="45">Premium</option>
+                        <option value="45">Premium</option>
+                        <option value="45">Premium</option>
+                    </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="promo">Promo code</label>
+                        <input type="text" name="promo" id="promo" />
+                    </div>
+                    <button type="submit">Apply</button>
+                </form>
+                <div class="placeholder-2">
+                    <span>Total cost</span>
+                    <span>$350</span>
+                </div>
+                <button>check out</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" charset="utf-8">
+(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
+</script>
